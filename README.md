@@ -38,3 +38,28 @@ add all the specific assemblies into this folder and run the `BoxingDetector.exe
 ```cmd
 BoxingDetector.exe AssemblyXXX.dll AssemblyYYY.dll AssemblyZZZ.dll
 ```
+
+**Output:**
+
+```cmd
+ILREADER.ANALYZER
+---------------------
+
+ILReader.Analyzer.Tests.Boxing_Patterns_Tests.Format
+->Stub2:
+    IL_0007: box System.Int32
+    IL_0012: call System.String Format(System.String, System.Object, System.Object)
+
+ILReader.Analyzer.Tests.Boxing_Patterns_Tests.Concat
+->Stub2:
+    IL_0002: box System.Int32
+    IL_000D: call System.String Concat(System.Object, System.Object)
+
+ILReader.Analyzer.Tests.Boxing_Patterns_Tests.EnumHasFlag
+->Stub2:
+    IL_0002: box ILReader.Analyzer.Tests.Boxing_Patterns_Tests+EnumHasFlag+State
+    IL_000D: call Boolean HasFlag(System.Enum)
+->Stub4:
+    IL_0003: constrained. ILReader.Analyzer.Tests.Boxing_Patterns_Tests+EnumHasFlag+State
+    IL_0009: callvirt System.String ToString()
+```

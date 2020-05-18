@@ -30,7 +30,8 @@ namespace BoxingDetector {
         static ILPattern[] boxingPatterns = new ILPattern[] {
             StringFormatBoxing.Instance,
             StringConcatBoxing.Instance,
-            EnumHasFlagBoxing.Instance,
+            EnumMethodBoxing.Instance,
+            EnumToStringBoxing.Instance,
         };
         static void ProcessAssembly(string localPath, string asmPath, bool skipKnownAssemblies = false) {
             if(!File.Exists(asmPath))
@@ -80,11 +81,10 @@ namespace BoxingDetector {
                         Console.WriteLine(TypeHelper.GetTypeName(type));
                         typeMatch = true;
                     }
-                    Console.WriteLine("-> " + method.Name + ", " + boxingPattern.ToString());
+                    Console.Write("->" + boxingPattern.ToString());
                 }
             }
-            if(asmMatch)
-                Console.WriteLine();
+            if(asmMatch) Console.WriteLine();
         }
     }
 }
